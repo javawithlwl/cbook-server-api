@@ -1,19 +1,28 @@
 package com.careerit.cbook.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.transaction.annotation.Transactional;
 
-@Data
+import java.util.UUID;
+
 @Entity
-public class Contact {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long cid;
-        private String name;
-        private String email;
-        private String mobile;
-        private String city;
+@Getter
+@Setter
+@Table(name = "contact")
+public class Contact extends BaseEntity {
+    @Id
+    private UUID id;
+    private String name;
+    private String email;
+    private String mobile;
+    private String city;
+
+    @PrePersist
+    public void onPrePersist() {
+        this.id = UUID.randomUUID();
+        super.onPrePersist();
+    }
 }
