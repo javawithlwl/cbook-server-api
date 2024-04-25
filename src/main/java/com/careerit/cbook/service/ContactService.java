@@ -9,9 +9,9 @@ import java.util.UUID;
 public interface ContactService {
 
         ContactDto addContact(ContactDto contactDto);
-        Contact updateContact(Contact contact);
+        ContactDto updateContact(ContactDto contactDto);
         boolean deleteContact(UUID cid);
         ContactDto getContact(UUID cid);
-        List<Contact> getContacts();
-        List<Contact> search(String str);
+        List<ContactDto> getContacts();
+        List<ContactDto> search(String str);
 }
