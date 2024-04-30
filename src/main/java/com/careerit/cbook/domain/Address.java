@@ -1,6 +1,5 @@
 package com.careerit.cbook.domain;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -14,8 +13,7 @@ import java.util.UUID;
 @Setter
 @Entity(name = "contact_address")
 public class Address extends BaseEntity {
-    @Id
-    private UUID id;
+
     @Column(name="city")
     private String city;
     @Column(name = "state")
@@ -26,8 +24,8 @@ public class Address extends BaseEntity {
     private String zipCode;
 
     @PrePersist
+    @Override
     public void onPrePersist() {
-        this.id = UUID.randomUUID();
-        super.onPrePersist();
+         super.onPrePersist();
     }
 }

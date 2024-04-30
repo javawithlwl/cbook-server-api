@@ -13,4 +13,7 @@
     <changeSet id="2" author="careerit">
         <sqlFile path="/db-migration/sql-scripts/2_alter_create_address.sql" splitStatements="true" stripComments="true"/>
     </changeSet>
+    <changeSet id="3" author="careerit">
+        <sqlFile path="/db-migration/sql-scripts/3_create_app_user_table.sql" splitStatements="true" stripComments="true"/>
+    </changeSet>
 </databaseChangeLog>

@@ -1,10 +1,9 @@
 package com.careerit.cbook.web;
-
-import com.careerit.cbook.domain.Contact;
 import com.careerit.cbook.dto.ContactDto;
 import com.careerit.cbook.service.ContactService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,6 +44,8 @@ public class ContactController {
 
         @GetMapping("/all")
         public ResponseEntity<List<ContactDto>> getContacts(){
+            // Get username from security context
+            String username = SecurityContextHolder.getContext().getAuthentication().getName();
             return ResponseEntity.ok(contactService.getContacts());
         }
 

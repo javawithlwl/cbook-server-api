@@ -21,6 +21,9 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ContactServiceImpl implements ContactService{
 
+    public static final String CONTACT_ID_CAN_T_BE_NULL = "Contact id can't be null";
+    public static final String CONTACT_CAN_T_BE_NULL = "Contact can't be null";
+    public static final String CONTACT_WITH_ID_NOT_FOUND = "Contact with id : {} not found";
     private final ContactRepository contactRepository;
     private final AddressRepository addressRepository;
     @Override
@@ -48,8 +51,8 @@ public class ContactServiceImpl implements ContactService{
 
     @Override
     public ContactDto updateContact(ContactDto contactDto) {
-        Assert.notNull(contactDto,"Contact can't be null");
-        Assert.notNull(contactDto.getId(),"Contact id can't be null");
+        Assert.notNull(contactDto, CONTACT_CAN_T_BE_NULL);
+        Assert.notNull(contactDto.getId(), CONTACT_ID_CAN_T_BE_NULL);
         Assert.notNull(contactDto.getName(),"Name can't be null");
         Assert.notNull(contactDto.getEmail(),"Email can't be null");
 
@@ -72,7 +75,7 @@ public class ContactServiceImpl implements ContactService{
             log.info("Contact with id : {} is updated successfully", updatedContactDto.getId());
             return updatedContactDto;
         }else{
-            log.error("Contact with id : {} not found",contactDto.getId());
+            log.error(CONTACT_WITH_ID_NOT_FOUND,contactDto.getId());
             throw new ContactNotFoundException("Contact with id : "+contactDto.getId()+" not found");
         }
 

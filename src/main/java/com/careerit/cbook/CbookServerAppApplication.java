@@ -1,5 +1,6 @@
 package com.careerit.cbook;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -9,6 +10,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
+@Slf4j
 public class CbookServerAppApplication  {
 
 	@Value("${greetings}")
@@ -19,8 +21,7 @@ public class CbookServerAppApplication  {
 
 	@Bean
 	public CommandLineRunner commandLineRunner() {
-		return args ->{
-			System.out.println("Greetings : "+greetings);
-		};
+		return args ->
+			log.info("Greetings : "+greetings);
 	}
 }

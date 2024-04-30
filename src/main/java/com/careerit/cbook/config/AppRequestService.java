@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 @Component
 @Slf4j
 public class AppRequestService {
-         @Scheduled(cron = "0 */3 * ? * *")
+         //@Scheduled(cron = "0 */3 * ? * *")
          public void makeRestApiCall(){
              RestTemplate restTemplate = new RestTemplate();
              String response = restTemplate.getForObject("https://cbook-server-api.onrender.com/api/contact/greet", String.class);
