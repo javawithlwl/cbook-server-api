@@ -10,10 +10,10 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 public class ContactDto extends BaseEntityDto{
-
     private UUID id;
     private String name;
     private String email;
     private String mobile;
+    private UUID userId;
     private AddressDto address;
 }
