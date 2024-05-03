@@ -27,8 +27,8 @@ public class SecurityConfiguration {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth->{
                     auth
-                            .requestMatchers("/auth/**")
-                            .permitAll()
+                            .requestMatchers("/auth/**").permitAll()
+                            .requestMatchers(AUTH_WHITE_LIST).permitAll()
                             .anyRequest().authenticated();
                 }).sessionManagement(session->{
                     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -38,5 +38,12 @@ public class SecurityConfiguration {
         return http.build();
     }
 
+    private static final String[] AUTH_WHITE_LIST = {
+            "/v3/api-docs/**",
+            "/swagger-ui/**",
+            "/swagger-ui.html",
+            "/v2/api-docs/**",
+            "/swagger-resources/**"
+    };
 
 }
