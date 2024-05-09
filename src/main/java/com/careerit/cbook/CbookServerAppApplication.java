@@ -25,11 +25,11 @@ public class CbookServerAppApplication  {
 		SpringApplication.run(CbookServerAppApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	public CommandLineRunner commandLineRunner() {
 		return args -> {
 			log.info("Greetings : " + greetings);
 			emailService.sendEmail("javawithlwl@gmail.com", "Greetings", greetings);
 		};
-	}
+	}*/
 }
