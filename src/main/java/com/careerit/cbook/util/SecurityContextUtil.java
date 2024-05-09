@@ -9,4 +9,8 @@ public class SecurityContextUtil {
             AppUser user = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             return user;
         }
+
+        public static String getLoginUserName(){
+            return getLoginUser().getUsername();
+        }
 }
