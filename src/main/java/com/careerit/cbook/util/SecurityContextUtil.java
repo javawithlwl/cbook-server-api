@@ -13,4 +13,8 @@ public class SecurityContextUtil {
         public static String getLoginUserName(){
             return getLoginUser().getUsername();
         }
+
+        public static String getLoginUserEmail(){
+            return getLoginUser().getEmail();
+        }
 }
