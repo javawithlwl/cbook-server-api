@@ -20,7 +20,7 @@ public interface ContactRepository extends JpaRepository<Contact, UUID> {
         return findByMobileAndUserId(mobile,userId);
     }
 
-    @Query("select c from Contact c where (c.name like %:str% or c.email like %:str% or c.mobile like %:str%) and deleted = false and userId = :userId")
+    @Query("select c from Contact c where (c.name like %:str% or c.email like %:str% or c.mobile like %:str%) and c.deleted = false and c.userId = :userId")
     List<Contact> searchOfUser(@Param("str") String str, @Param("userId") UUID userId);
 
     default List<Contact> search(String str){
